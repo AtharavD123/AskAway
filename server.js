@@ -9,17 +9,16 @@ const app = express();
 // Middleware
 app.use(express.json());
 app.use(cors());
-app.use(express.static(__dirname)); // Serve static files from root
 
-// Connect to MongoDB
+// MongoDB connection
 mongoose.connect(process.env.MONGO_URI)
     .then(() => console.log("MongoDB connected"))
-    .catch((err) => console.log("MongoDB error:", err));
+    .catch((err) => console.error("MongoDB connection error:", err));
 
-// Schema and Model
+// Schema and model
 const questionSchema = new mongoose.Schema({
     text: { type: String, required: true },
-    createdAt: { type: Date, default: Date.now },
+    createdAt: { type: Date, default: Date.now }
 });
 
 const Question = mongoose.model("Question", questionSchema);
@@ -40,19 +39,15 @@ app.post("/api/questions", async (req, res) => {
     }
 });
 
-// Serve index.html at root
+// Serve index.html
 app.get("/", (req, res) => {
-    res.sendFile(path.join(__dirname, "index.html")); // index.html in root
+    res.sendFile(path.join(__dirname, "index.html"));
 });
 
-app.get("/", (req, res) => {
-    res.sendFile(path.resolve(__dirname, "index.html"));
-});
-
+// Optional: 404 fallback
 app.use((req, res) => {
     res.status(404).send("404 Not Found");
 });
-
 
 // Start server
 const PORT = process.env.PORT || 5000;
