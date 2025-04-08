@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anonymous Q&A</title>
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="script.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="profile-box">
+            <img src="profile.jpg" alt="Profile Picture" class="profile-pic">
+            <div class="profile-info">
+                <p class="username">@yourusername</p>
+                <p class="subtitle">ask me anything, anonymously.....</p>
+            </div>
+        </div>
+        <div class="question-box">
+            <textarea id="question" placeholder="Send me anonymous messages..."></textarea>
+            <img src="dice.png" alt="Dice" class="dice-icon" onclick="generateRandomQuestion()">
+            <button class="send-btn" onclick="submitQuestion()">Send!</button>
+        </div>
+        <p class="people-count">👇 252 people just tapped the button 👇</p>
+        <button class="get-btn">Get your own messages!</button>
+        <div class="footer-links">
+            <a href="#">Terms</a> | <a href="#">Privacy</a>
+        </div>
+
+    </div>
+</body>
+</html>
