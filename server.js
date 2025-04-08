@@ -45,7 +45,7 @@ app.post("/api/questions", async (req, res) => {
 
 // Serve frontend HTML
 app.get("/", (req, res) => {
-    res.sendFile(path.join(__dirname, "Public", "index.html"));
+    res.sendFile(path.join(__dirname, "public", "index.html"));
 });
 
 // Start server
